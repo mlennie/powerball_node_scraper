@@ -1,25 +1,28 @@
-const express = require('express');
+var express = require('express');
       powerball = require('../util/powerball'),
-      response = require('../util/response'),
       router = express.Router();
 
 /* GET home page. */
-router.get('/', function(req, res) {
+router.get('/', (req, res) => {
   res.json('index', { title: 'Express' });
 });
 
 /* GET jackpot */
-router.get('/jackpot', function(req, res) {
+router.get('/jackpot', (req, res) => {
   powerball.getJackpot()
-    .then(response.returnSuccess)
-    .catch(response.returnError);
+  .then((results) => {
+    return res.send(results);
+  })
+  .catch(console.log);
 });
 
 /* GET winning numbers */
-router.get('/numbers', function(req, res) {
-  powerball.getWinningNumbers()
-    .then(response.returnSuccess)
-    .catch(response.returnError);
+router.get('/numbers', (req, res) => {
+  powerball.getNumbers()
+  .then((results) => {
+    return res.send(results);
+  })
+  .catch(console.log);
 });
 
 
