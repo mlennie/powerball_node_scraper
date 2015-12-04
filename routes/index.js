@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
 router.get('/jackpot', (req, res) => {
   powerball.getJackpot()
   .then((results) => {
-    return res.send(results);
+    return res.json(results);
   })
   .catch(console.log);
 });

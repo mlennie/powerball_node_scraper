@@ -10,7 +10,7 @@ exports.getJackpot = () => {
   .then((res) => {
     $ = cheerio.load(res.text);
     var jackpot = $('#mainContent > div.content > table:nth-child(1) > tr > td:nth-child(14) > font > strong');
-    return jackpot.html();
+    return Number(jackpot.html().split(' ')[0].split('$')[1] + '00000000');
   });
 };
 
