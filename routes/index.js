@@ -20,7 +20,7 @@ router.get('/jackpot', (req, res) => {
 router.get('/numbers', (req, res) => {
   powerball.getNumbers()
   .then((results) => {
-    return res.send(results);
+    return res.json(results);
   })
   .catch(console.log);
 });
