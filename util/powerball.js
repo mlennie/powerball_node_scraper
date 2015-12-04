@@ -20,8 +20,8 @@ exports.getNumbers = () => {
     return request.get('http://www.powerball.com/powerball/winnums-text.txt');
   })
   .then((res) => {
-    var numbers = res.text.split('\n')[1];
-    return numbers.split('  ').map(function(n){return +n}).slice(1);
+    return res.text.split('\n')[1].split('  ')
+              .map(function(n){return +n}).slice(1);
   });
 };
 
